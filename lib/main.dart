@@ -1,3 +1,4 @@
+import 'package:emergenie/screens/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:emergenie/screens/welcome_screen.dart';
 import 'package:emergenie/screens/login_screen.dart';
@@ -32,6 +33,7 @@ class Emergenie extends StatelessWidget {
         LoginScreen.id: (context) => LoginScreen(),
         RegistrationScreen.id: (context) => RegistrationScreen(),
         HomeScreen.id: (context) => HomeScreen(),
+        Dashboard.id: (context) => Dashboard(),
       },
     );
   }

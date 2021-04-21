@@ -1,4 +1,4 @@
-import 'package:firebase_core/firebase_core.dart';
+//import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -49,18 +49,22 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.pink[50],
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 24.0),
-        child: Center(
-          child: Container(
-            child: Text(
-              'Emergenie',
-              style: TextStyle(
-                fontSize: 42.0,
-                // color: Colors.red,
-                fontFamily: 'ZenDots',
-                fontWeight: FontWeight.w800,
+        child: Column(
+          children: [
+            Center(
+              child: Container(
+                child: Text(
+                  'Emergenie',
+                  style: TextStyle(
+                    fontSize: 42.0,
+                    // color: Colors.red,
+                    fontFamily: 'ZenDots',
+                    fontWeight: FontWeight.w800,
+                  ),
+                ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );

@@ -1,8 +1,12 @@
-import 'package:emergenie/screens/home_screen.dart';
+//import 'package:emergenie/screens/home_screen.dart';
+import 'package:emergenie/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'home_screen.dart';
+//import 'home_screen.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+//import 'dashboard.dart';
+import 'dart:developer';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration_screen';
@@ -145,13 +149,22 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                             await _auth.createUserWithEmailAndPassword(
                                 email: email, password: password);
                         if (newUser != null) {
-                          Navigator.pushNamed(context, HomeScreen.id);
+                          Fluttertoast.showToast(
+                              msg: "Registration Successful.");
+                          Navigator.pushNamed(context, LoginScreen.id);
                         }
                         setState(() {
                           showSpinner = false;
                         });
                       } catch (e) {
-                        print(e);
+                        setState(() {
+                          showSpinner = false;
+                        });
+                        log(e.toString());
+                        Fluttertoast.showToast(
+                            msg: "Invalid details. Couldn't Register");
+                        return null;
+                        //print(e);
                       }
                     },
                     minWidth: 200.0,

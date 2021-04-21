@@ -1,7 +1,10 @@
-import 'package:emergenie/screens/home_screen.dart';
+//import 'package:emergenie/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'dashboard.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'dart:developer';
 
 class LoginScreen extends StatefulWidget {
   static const String id = 'login_screen';
@@ -109,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             .signInWithEmailAndPassword(
                                 email: email, password: password)
                             .then((value) =>
-                                Navigator.pushNamed(context, HomeScreen.id));
+                                Navigator.pushNamed(context, Dashboard.id));
                         //              if (user != null) {
                         //              Navigator.pushNamed(context, HomeScreen.id);
                         //          }
@@ -117,7 +120,14 @@ class _LoginScreenState extends State<LoginScreen> {
                           showSpinner = false;
                         });
                       } catch (e) {
-                        print(e);
+                        setState(() {
+                          showSpinner = false;
+                        });
+                        log(e.toString());
+                        Fluttertoast.showToast(
+                            msg: "Incorrect Credentials. Can't Sign you in.");
+                        return null;
+                        //print(e);
                       }
                     },
                     minWidth: 200.0,
